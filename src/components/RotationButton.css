@@ -1,0 +1,254 @@
+.rb_wrapper {
+    height: 70px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.rb_container {
+    height: 40px;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.rb_box {
+    width: 160px;
+    height: 40px;
+    position: absolute;
+    display: flex;
+    justify-self: center;
+    transform-style: preserve-3d;
+    transform-origin: 50%;
+    transition: 250ms linear;
+    cursor: pointer;
+}
+
+.rb_box_deny_anim {
+    animation: rb_denyAnim 3s forwards;
+}
+
+@keyframes rb_denyAnim {
+    0% {
+        transform: none;
+    }
+    45% {
+        transform: rotateX(0deg) rotateY(90deg);
+    }
+    100% {
+        transform: rotateX(90deg) rotateY(360deg);
+    }
+}
+
+.rb_box_deny_anim_reset {
+    animation: rb_denyAnim 3s forwards;
+}
+
+.rb_box_confirm_anim {
+    animation: rb_confirmAnim 3s forwards;
+}
+
+@keyframes rb_confirmAnim {
+    0% {
+        transform: none;
+    }
+    45% {
+        transform: rotateX(0deg) rotateY(-90deg);
+    }
+    100% {
+        transform: rotateX(-90deg) rotateY(-360deg);
+    }
+}
+
+.rb_box_pending_anim.fromDeny {
+    animation: rb_denyReset 2s forwards;
+}
+
+@keyframes rb_denyReset {
+    0% {
+        transform: rotateX(90deg);
+    }
+    70% {
+        transform: rotateX(270deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+.rb_box_pending_anim.fromConfirm {
+    animation: rb_confirmReset 2s forwards;
+}
+
+@keyframes rb_confirmReset {
+    0% {
+        transform: rotateX(-90deg);
+    }
+    70% {
+        transform: rotateX(-270deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+.rb_nudge_container {
+    width: 100%
+}
+
+.rb_nudge_text {
+    opacity: 0;
+    font-family: 'Courier Prime', monospace;
+    transition: 2s linear;
+    text-align: center;
+}
+
+.rb_nudge_visible {
+    animation: rb_nudge 2s forwards;
+}
+
+@keyframes rb_nudge {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100;
+    }
+}
+
+.rb_side {
+    text-align: center;
+    color: white;
+    background-color: #000000;
+    border: 4px solid white;
+    font-size: 24px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rb_side_button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.rb_side_button {
+    font-size: 24px;
+    width: 78px;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+}
+
+.rb_side_button_divider {
+    width: 4px;
+    height: 100%;
+    background-color: white;
+}
+
+.rb_side_confirm {
+    background-color: rgb(0, 211, 0);
+}
+
+.rb_side_button.rb_side_confirm:hover {
+    background-color: rgb(0, 115, 0);
+}
+
+.rb_side_deny {
+    background-color: rgb(255, 5, 5)
+}
+
+.rb_side_button.rb_side_deny:hover {
+    background-color: rgb(159, 5, 5);
+}
+
+.rb_side_resp {
+    font-size: 24px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rb_side_l {
+    height: 40px;
+    width: 160px;
+}
+
+.rb_side_tb {
+    height: 40px;
+    width: 160px;
+}
+
+.rb_side_s {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    stroke-width: 20px;
+}
+
+#rb_front {
+    /* 1/2 of the width + 2px for the border */
+    transform: translateZ(22px);
+}
+
+#rb_back {
+    /* first is to put it in the right spot, second 2 are to rotate the text appropriately */
+    transform: translateZ(-22px) rotateZ(180deg) rotateY(180deg);
+}
+
+/* deny */
+#rb_left {
+    right: 136px;
+    transform: rotateY(-90deg);
+}
+
+/* confirm */
+#rb_right {
+    left: 144px;
+    transform: rotateY(90deg);
+}
+
+#rb_bottom {
+    top: 24px;
+    /* first is to put it in the right spot, second 2 are to rotate the text appropriately */
+    transform: rotateX(90deg) rotateZ(180deg) rotateY(180deg);
+}
+
+#rb_top {
+    top: -24px;
+    /* first is to put it in the right spot, second 2 are to rotate the text appropriately */
+    transform: rotateX(-90deg) rotateZ(180deg) rotateY(180deg);
+}
+
+@keyframes rb_spin {
+    0% {
+        transform: rotateX(0deg);
+    }
+    25% {
+        transform: rotateX(90deg);
+    }
+    50% {
+        transform: rotateX(180deg);
+    }
+    75% {
+        transform: rotateX(270deg)
+    }
+    100% {
+        transform: rotateX(360deg);
+    }
+}
